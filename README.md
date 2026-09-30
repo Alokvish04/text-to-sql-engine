@@ -31,3 +31,27 @@ cp .env.example .env.local
 ```
 
 Grab a free API key from [console.groq.com/keys](https://console.groq.com/keys) and drop it into `.env.local`:
+
+```
+GROQ_API_KEY=your_key_here
+```
+
+Then:
+
+```bash
+npm run dev
+```
+
+## Deploying
+
+Push to GitHub, import into Vercel, add `GROQ_API_KEY` as an environment variable in the project settings, deploy. That's it — no database to provision since it's all in-memory/WASM.
+
+## Things I'd add next
+
+- Rate limiting on the generate-SQL endpoint (right now it's wide open, fine for a demo but not for real traffic)
+- Query history so you can look back at past questions
+- Support for more SQL dialects beyond SQLite
+
+## Sample data to try
+
+There's a `test-data/` folder with a small bookstore SQLite DB and a students CSV if you want to try it without hunting for your own dataset.
